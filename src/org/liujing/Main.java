@@ -7,6 +7,7 @@ import java.util.List;
 public class Main {
     private static final int desPrice = 30;
     private static final int discountPrice = 12;
+    private static final boolean isRiceCountSameByMenuSize = true;
 
     public static void main(String[] param) {
         List<List<Integer>> resultOrderList = new ArrayList<>();
@@ -16,16 +17,12 @@ public class Main {
             menuPriceList.add(Integer.parseInt(param[i]));
         }
 
-        menuPriceList.add(13);
-        menuPriceList.add(18);
+        menuPriceList.add(10);
+        menuPriceList.add(10);
         menuPriceList.add(16);
         menuPriceList.add(22);
-        menuPriceList.add(12);
-
-        menuPriceList.add(12);
-        menuPriceList.add(12);
-        menuPriceList.add(12);
-        menuPriceList.add(12);
+        menuPriceList.add(25);
+        menuPriceList.add(isRiceCountSameByMenuSize ? menuPriceList.size() : 0);
 
         menuPriceList.sort(new Comparator<Integer>() {
             @Override
@@ -43,10 +40,11 @@ public class Main {
 
         System.out.println("饿了么目标价 = " + desPrice);
         System.out.println("饿了么折扣价 = " + discountPrice);
+        System.out.println("米饭数量和菜的数量一致吗？ = " + isRiceCountSameByMenuSize);
         System.out.println("----------------计算结果----------------");
         System.out.println("最优订单分组 = " + resultOrderList);
         System.out.println("落单分组 = " + menuPriceList);
-        System.out.println("落单分组再多加" + (desPrice - singeOrderList - 12) + "元享受折扣价");
+        System.out.println("落单分组再多加" + (desPrice - singeOrderList) + "元享受折扣价");
 
     }
 
